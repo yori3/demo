@@ -1,4 +1,4 @@
-# demoの説明
+# demoのリンク
 
 
 - carousel\
