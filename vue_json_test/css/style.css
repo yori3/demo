@@ -1,0 +1,246 @@
+@charset "UTF-8";
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*::before, *::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body, html {
+  color: #333;
+  font-family: 'yakuhanjp', noto-sans-cjk-jp, sans-serif;
+  line-height: 1;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+input,
+select,
+textarea,
+button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  outline: none;
+  font-family: 'yakuhanjp', noto-sans-cjk-jp, sans-serif;
+}
+
+input::-ms-expand,
+select::-ms-expand,
+textarea::-ms-expand,
+button::-ms-expand {
+  /* select要素のデザインを無効にする（IE用） */
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/** common **/
+.wrapper {
+  overflow: hidden;
+}
+
+.btn {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn_body {
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #00bb85;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.btn_body::before{
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2));
+  transform: translateX(-50%);
+  content: "";
+}
+
+.btn_body::after {
+  display: block;
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border-left: 2px solid #fff;
+  border-top: 2px solid #fff;
+  transform: translateY(-50%) rotate(135deg);
+  content: "";
+}
+
+.check {
+  position: relative;
+  padding: 80px 5%;
+  background-color: #ddd;
+}
+
+.check_box {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  opacity: 0;
+  max-width: 890px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.check_box.is-show {
+  position: static;
+  opacity: 1;
+  transform: none;
+  transition: opacity .5s;
+  pointer-events: auto;
+}
+
+.check_box.is-hide {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  transition: opacity .5s;
+  pointer-events: none;
+}
+
+.check_ttl {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.check_lead {
+  margin-top: 30px;
+  font-size: 1.8rem;
+  line-height: 2;
+  text-align: center;
+}
+
+.check_startBtn {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.check .btn {
+  width: 500px;
+  height: 90px;
+}
+
+.check_flow {
+  display: flex;
+  width: 500px;
+  height: 45px;
+  margin: 0 auto 30px;
+}
+
+.check_qNum {
+  color: red;
+  font-size: 3rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.check_question {
+  margin-top: 30px;
+  font-size: 1.2rem;
+  line-height: 1.75;
+  text-align: center;
+}
+
+.check_question strong {
+  font-weight: bold;
+  background-image: linear-gradient(to bottom, rgba(255, 247, 153, 0) 0%, rgba(255, 247, 153, 0) 50%, #fff799 50%, #fff799 100%);
+}
+
+.check_notes {
+  width: 500px;
+  margin: 20px auto 0;
+  font-size: .9rem;
+}
+
+.check_questionBtn {
+  margin-top: 80px;
+}
+
+.check_questionBtn .btn + .btn {
+  margin-top: 30px;
+}
+
+.check .result_box {
+  padding: 50px 110px;
+}
+
+.check .result_box_inner{
+  display: none;
+}
+
+.check .result_ttl {
+  font-size: 3rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.check .result_ttl strong {
+  background-image: linear-gradient(to bottom, rgba(255, 247, 153, 0) 0%, rgba(255, 247, 153, 0) 50%, #fff799 50%, #fff799 100%);
+  font-weight: bold;
+}
+
+.check .result_text {
+  margin-top: 35px;
+  font-size: 1rem;
+  line-height: 2;
+}
+
+.check .result_text strong {
+  color: red;
+}

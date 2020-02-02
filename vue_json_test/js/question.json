@@ -1,0 +1,82 @@
+[
+  {
+    "id":"1",
+    "num": "1",
+    "question": "吾輩は猫である。<strong>名前はまだ無い。</strong><br>どこで生れたかとんと見当がつかぬ。",
+    "links": [
+      {
+        "link": "2",
+        "select": "Yes"
+      },{
+        "link": "result_1",
+        "select": "No"
+      }
+    ],
+    "notes": ""
+  },{
+    "id":"2",
+    "num": "2",
+    "question": "吾輩は猫である。<strong>名前はまだ無い。</strong><br>どこで生れたかとんと見当がつかぬ。",
+    "links": [
+      {
+        "link": "3",
+        "select": "Yes"
+      },
+      {
+        "link": "result_2",
+        "select": "No"
+      }
+    ],
+    "notes": ""
+  },{
+    "id": "3",
+    "num": "3",
+    "question": "吾輩は猫である。<strong>名前はまだ無い。</strong>。<br>どこで生れたかとんと見当がつかぬ。",
+    "links": [
+      {
+        "link": "4",
+        "select": "Yes"
+      },
+      {
+        "link": "result_3",
+        "select": "No"
+      }
+    ],
+    "notes": ""
+  },{
+    "id": "4",
+    "num": "4",
+    "question": "吾輩は猫である。<strong>名前はまだ無い。</strong><br>どこで生れたかとんと見当がつかぬ。",
+    "links": [
+      {
+        "link": "5",
+        "select": "選択肢１"
+      },
+      {
+        "link": "result_4",
+        "select": "選択肢2"
+      },
+      {
+        "link": "result_5",
+        "select": "選択肢3"
+      }
+    ],
+    "notes": "※選択肢の数が違うバージョンです。"
+  },
+  {
+    "id": "5",
+    "num": "5",
+    "question": "吾輩は猫である。<strong>名前はまだ無い。</strong><br>どこで生れたかとんと見当がつかぬ。",
+    "links": [
+      {
+        "link": "result_4",
+        "select": "No"
+      },
+      {
+        "link": "result_5",
+        "select": "No"
+      }
+    ],
+    "notes": ""
+  }
+]

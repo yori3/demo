@@ -1,0 +1,112 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>jQuery App</title>
+</head>
+
+<style>
+  *{
+    box-sizing: border-box;
+  }
+  ul,li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .hoge01{
+    display: inline-block;
+    border: 1px solid #666;
+    padding: 1em 3em;
+    border-radius: 10px;
+  }
+  .hoge01.active{
+    background-color: #d98;
+  }
+
+  #tab{
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .tabMenu{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    list-style: none;
+    border-bottom: 1px solid #ffa594;
+  }
+  .tabItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    flex-basis: 32%;
+    flex-shrink: 0;
+    border-left: 1px solid #ffa594;
+    border-right: 1px solid #ffa594;
+    border-top: 1px solid #ffa594;
+    border-radius: 10px 10px 0 0;
+    color: #ffa594;
+    font-weight: bold;
+    text-align: center;
+  }
+  .tabItem.tabItem-current{
+    background-color: #ffa594;
+    color: #fff;
+  }
+
+  .tabContent{
+    position: relative;
+    border: 1px solid #ffa594;
+  }
+  .tabBlock{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 60px;
+    opacity: 0;
+    transition: .5s;
+  }
+  .tabBlock.tabBlock-show{
+    position: static;
+    opacity: 1;
+  }
+</style>
+
+<body>
+
+  <div id="tab">
+    <ul class="tabMenu">
+      <li class="tabItem tabItem-current">tab01</li>
+      <li class="tabItem">tab02</li>
+      <li class="tabItem">tab03</li>
+    </ul>
+
+    <div class="tabContent">
+      <div class="tabBlock tabBlock-show">
+        <div class="tabBlock__inner">
+          <h3 class="tabBlock__title">コンテンツ01</h3>
+          <p class="tabBlock__text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        </div>
+      </div>
+      <div class="tabBlock">
+        <div class="tabBlock__inner">
+          <h3 class="tabBlock__title">コンテンツ02</h3>
+          <p class="tabBlock__text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        </div>
+      </div>
+      <div class="tabBlock">
+        <div class="tabBlock__inner">
+          <h3 class="tabBlock__title">コンテンツ03</h3>
+          <p class="tabBlock__text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <script src="index02_b.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<title>Vue.js JSON TEST</title>
+
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <section class="check">
+    <div class="check_box is-show" id="start">
+      <h2 class="check_ttl">診断テスト</h2>
+      <div class="check_startBtn">
+        <div class="btn"><button data-box="q1" class="btn_body check_btn startbtn">診断をはじめる</button></div>
+      </div>
+    </div>
+
+    <div id="question" class="question_wrap">
+      <div class="check_box question_box" v-bind:class="'q'+item.id" v-bind:id="'q'+item.id" v-for="item in posts">
+        <h3 class="check_qNum" v-text="'Q'+item.num"></h3>
+        <p class="check_question" v-html="item.question"></p>
+        <div class="check_questionBtn">
+          <div class="btn" v-for="link in item.links">
+            <button v-bind:data-box="'q'+link.link" class="btn_body check_btn" v-html="link.select" v-on:click="check(item.id,link.link)"></button>
+          </div>
+          <p class="check_notes" v-if="item.notes" v-text="item.notes"></p>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="check_box result_box" id="result">
+
+      <!-- 結果出し分け部分 -->
+      <div class="result_box_inner" v-for="result in results" v-bind:class="'result_'+result.id" v-bind:id="'qresult_'+result.id">
+        <h3 class="result_ttl">
+          <strong v-html="result.title"></strong>
+        </h3>
+        <p class="result_text" v-html="result.text"></p>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,maximum-scale=1">
+<title>自動切り替え</title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	box-sizing: border-box;
+}
+
+.carousel{position:relative;}
+
+.wrapper{
+	position: relative;
+	overflow: hidden;
+}
+
+ul.slider{
+	position: relative;
+}
+
+ul.slider li{
+	position: absolute;
+	width: 100%;
+	height: 300px;
+	color: white;
+	font-size: 3rem;
+	text-align: center;
+	line-height: 300px;
+}
+ul.slider li:first-child{background-color:red;}
+ul.slider li:nth-child(2){background-color:blue;}
+ul.slider li:nth-child(3){background-color:green;}
+ul.slider li:nth-child(4){background-color:orange;}
+ul.slider li:nth-child(5){background-color:yellow; color: black;}
+
+.btn{
+	position: absolute;
+	left: 0;
+	overflow: hidden;
+	transform: translateY(-50%);
+}
+
+.btn li{
+	padding: 10px;
+	background-color: rgba(255,255,255,0.5);
+	font-size: 2rem;
+	cursor: pointer;
+}
+
+.prev{float:left;}
+.next{float:right;}
+
+</style>
+</head>
+
+<body>
+<div class="carousel">
+  <div class="wrapper">
+    <ul class="slider">
+      <li>カルーセル１</li>
+      <li>カルーセル２</li>
+      <li>カルーセル３</li>
+      <li>カルーセル４</li>
+      <li>カルーセル５</li>
+    </ul>
+  </div>
+  <ul class="btn">
+    <li class="prev">＜</li>
+    <li class="next">＞</li>
+  </ul>
+</div>
+
+<!--
+<div class="pager">
+</div>-->
+
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script>
+var listNum = $('.slider li').length;//要素の数を取得
+var listWidth = $('.slider li').width();//要素一つ分の幅を取得
+var listHeight = $('.slider li').height();//要素一つ分の高さを取得
+$('.wrapper').css({'width':listWidth});//要素一つ分でトリミングするために幅を設定
+$('.slider').css({'height':listHeight});//ulの高さを設定
+$('.btn').css({//ボタンの位置を上下中央揃えにする
+	'top':(listHeight / 2),
+	'width':listWidth,
+});
+
+
+for(i=0;i<listNum;i++){//要素の数だけ処理を実行
+	$('.slider li:nth-child(' + (i+1) +')').css({'left':listWidth * i});//それぞれの要素の初期位置を設定
+}
+
+var imgNum = 0;//スライドの順番
+
+//右ボタン
+$('.next').on('click',function(){
+	leftSlider();
+});
+
+//左ボタン
+$('.prev').on('click',function(){
+	rightSlider();
+});
+
+setInterval(function(){//5秒ごとに処理
+	if(imgNum == listNum){//一周したら
+		imgNum = 0;//最初に戻す
+
+		slideAnimationL();
+	}else{
+		slideAnimationL();
+	}
+},5000);//動くまでの時間
+
+
+//左に動く処理
+function leftSlider(){
+	if(imgNum == listNum){//一周したら
+		imgNum = 0;//最初に戻す
+
+		slideAnimationL();
+	}else{
+		slideAnimationL();
+	}
+}
+
+function slideAnimationL(){
+for(j=0;j<listNum;j++){//要素の数だけ処理を実行
+	slideL(j);
+}
+	imgNum++;//スライドを一つすすめる
+	setTimeout(function(){
+		$('.slider li:nth-child(' + imgNum + ')').css({'left':listWidth * (listNum - 1)});//一番左の画像を一番右に持っていく
+	},1000);
+}
+
+function slideL(n){//要素を今の位置から一つ分左にずらす
+	$('li:nth-child('+ (n+1) +')').stop(true,true).animate({'left':($('li:nth-child('+ (n+1) +')').offset().left) - listWidth},1000);
+}
+
+
+//右に動く処理
+function rightSlider(){
+	if(imgNum == 0){//一周したら
+		imgNum = listNum;//最後に戻す
+
+		slideAnimationR();
+	}else{
+		slideAnimationR();
+	}
+}
+
+function slideAnimationR(){
+	$('.slider li:nth-child(' + imgNum + ')').css({'left':-listWidth + 'px'});//一番右の画像を一番左に持っていく
+	imgNum--;//スライドを一つもどす
+	setTimeout(function(){
+		for(k=0;k<listNum;k++){//要素の数だけ処理を実行
+			slideR(k);
+		}
+	},100);
+}
+
+function slideR(n){//要素を今の位置から一つ分右にずらす
+	$('li:nth-child('+ (n+1) +')').stop(true,true).animate({'left':($('li:nth-child('+ (n+1) +')').offset().left) + listWidth},1000);
+}
+
+
+
+//タッチイベント
+var touchS;
+var touchM;
+$('.slider').on('touchstart',function(){//タップしたとき
+	touchS = event.changedTouches[0].pageX;//タップの指の位置を取得
+});
+
+$('.slider').on('touchmove',function(){//指を動かしたとき
+	touchM = event.changedTouches[0].pageX//動かした指の位置を取得
+});
+
+$('.slider').on('touchend',function(){//指を離したとき
+	var direction = touchS - touchM;//最初と最後の指の位置の差を取得
+	if(direction > 0){//上の値が正　=　左にフリック
+		leftSlider();//右に一つ画像を変更
+	} else{//上の値が負　=　右にフリック
+		rightSlider();//左に一つ画像を変更
+	}
+});
+
+
+
+</script>
+</body>
+</html>

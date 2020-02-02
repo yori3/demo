@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+section{
+  display: none;
+  max-width: 480px;
+  margin: 60px auto 0;
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
+}
+
+.menu_ttl{
+  padding: 8px 10px;
+  background-color: #666;
+  color: #fff;
+  font-size: 1rem;
+}
+
+ul{
+  display: flex;
+  flex-wrap: wrap;
+}
+li{
+  width: 50%;
+  border-bottom: 1px solid #999;
+}
+li:nth-child(odd){
+border-right: 1px solid #999;
+}
+a{
+  display: block;
+  padding: 8px 10px;
+  color: #333;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+#menu01 li:nth-last-child(-n+2){
+  border-bottom: 0;
+}
+
+#menu02 li:nth-child(odd):last-child,
+#menu02 li:nth-child(odd):nth-last-child(2),
+#menu02 li:nth-child(even):last-child{
+  border-bottom: 0;
+}
+
+footer{
+  max-width: 480px;
+  margin: 0 auto;
+  height: 100px;
+  background-color: #666;
+}
+
+</style>
+</head>
+<body>
+
+<section id="menu01">
+  <div class="menu">
+    <h2 class="menu_ttl">カテゴリー1</h2>
+    <ul>
+      <li><a href="">リスト1</a></li>
+      <li><a href="">リスト2</a></li>
+      <li><a href="">リスト3</a></li>
+      <li><a href="">リスト4</a></li>
+      <li><a href="">リスト5</a></li>
+      <li><a href="">リスト6</a></li>
+      <li><a href="">リスト7</a></li>
+      <li><a href="">リスト8</a></li>
+    </ul>
+  </div>
+  <div class="menu">
+    <h2 class="menu_ttl">カテゴリー2</h2>
+    <ul>
+      <li><a href="">リスト1</a></li>
+      <li><a href="">リスト2</a></li>
+      <li><a href="">リスト3</a></li>
+      <li><a href="">リスト4</a></li>
+      <li><a href="">リスト5</a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="menu02">
+  <div class="menu">
+    <h2 class="menu_ttl">カテゴリー1</h2>
+    <ul>
+      <li><a href="">リスト1</a></li>
+      <li><a href="">リスト2</a></li>
+      <li><a href="">リスト3</a></li>
+      <li><a href="">リスト4</a></li>
+      <li><a href="">リスト5</a></li>
+      <li><a href="">リスト6</a></li>
+      <li><a href="">リスト7</a></li>
+      <li><a href="">リスト8</a></li>
+    </ul>
+  </div>
+  <div class="menu">
+    <h2 class="menu_ttl">カテゴリー2</h2>
+    <ul>
+      <li><a href="">リスト1</a></li>
+      <li><a href="">リスト2</a></li>
+      <li><a href="">リスト3</a></li>
+      <li><a href="">リスト4</a></li>
+      <li><a href="">リスト5</a></li>
+    </ul>
+  </div>
+</section>
+
+<footer></footer>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+var urlHash = location.hash;
+if(urlHash){
+	$(urlHash).show();
+}
+</script>
+</body>
+</html>
